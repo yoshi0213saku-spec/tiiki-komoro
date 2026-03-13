@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIがひも解く地域・歴史資料館 - History & Culture Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fcfbf7;
+            --accent-blue: #1d4ed8;
+            --accent-emerald: #059669;
+            --text-main: #1a202c;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* タイトル書体設定 */
+        .title-serif {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .title-sub {
+            letter-spacing: 0.4em;
+            font-weight: 800;
+            color: #4a5568;
+            text-indent: 0.4em;
+        }
+
+        /* 資料館カードスタイル */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+        }
+
+        .track-active {
+            border-left: 4px solid var(--accent-blue);
+            background: #eff6ff;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div class="max-w-2xl mx-auto px-4 py-8 md:py-12">
+        
+        <!-- 総合案内へ戻るボタン -->
+        <nav class="mb-8 fade-in">
+            <a href="https://yoshi0213saku-spec.github.io/deji-sogouannai01/" class="inline-flex items-center space-x-2 text-gray-400 hover:text-blue-600 transition-colors duration-300 group">
+                <div class="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center shadow-sm group-hover:border-blue-100 group-hover:bg-blue-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </div>
+                <span class="text-xs font-bold tracking-widest uppercase">総合案内に戻る</span>
+            </a>
+        </nav>
+
+        <!-- ヘッダーセクション -->
+        <header class="text-center mb-12 fade-in" style="animation-delay: 0.05s;">
+            <div class="inline-flex items-center space-x-2 bg-blue-50 px-4 py-1.5 rounded-full mb-6">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                <span class="text-[10px] font-black text-blue-600 tracking-[0.15em] uppercase">AI History Lab v2.0</span>
+            </div>
+            
+            <div class="space-y-3">
+                <p class="text-xs md:text-base title-sub uppercase">
+                    AIがひも解く
+                </p>
+                <h1 class="text-2xl md:text-4xl text-gray-900 title-serif">
+                    「地域・歴史資料館」
+                </h1>
+                <p class="text-lg md:text-xl font-bold text-gray-600">
+                    〜小諸城と「穴城」の謎〜
+                </p>
+            </div>
+        </header>
+
+        <div class="space-y-8 fade-in" style="animation-delay: 0.1s;">
+            
+            <!-- メインアーカイブカード -->
+            <div class="glass-card rounded-3xl p-8 space-y-10 border border-gray-100 shadow-sm">
+                <!-- アーカイブ概要 -->
+                <section>
+                    <h2 class="text-xs font-bold text-blue-500 uppercase tracking-[0.3em] mb-4">Archive Overview</h2>
+                    <h3 class="text-lg font-bold mb-4 text-gray-800">アーカイブ概要</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-8">
+                        本デジタルアーカイブでは、地域の地形データ、古文書、伝承をAIが多角的に解析。過去の人々がどのように自然環境を利用し、独自の文化や防御機構を築き上げたのかを解明します。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <!-- AI音声解説のポイント -->
+                        <div class="bg-blue-50/40 p-5 rounded-2xl border border-blue-50">
+                            <h4 class="text-sm font-black text-gray-800 mb-3 flex items-center">
+                                <span class="w-2 h-2 bg-blue-600 rounded-full mr-2 shadow-sm"></span>
+                                AIによる歴史解析アプローチ
+                            </h4>
+                            <ul class="space-y-2 text-[13px] text-gray-600">
+                                <li><strong>1. 地形戦略の可視化:</strong> 「穴城」という特異な構造が、当時の戦術においていかに合理的であったかを論理的に導き出します。</li>
+                                <li><strong>2. 文化の深層分析:</strong> 「ペンギンの蔵」に代表される、地域に根付くユニークな象徴の歴史的背景と現代的価値を紐解きます。</li>
+                                <li><strong>3. 物語の再構成:</strong> 断片的な史実をAIが繋ぎ合わせ、一つの没入感のある物語として提供します。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-gray-100">
+
+                <!-- 今回のテーマ -->
+                <section>
+                    <h2 class="text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mb-4">Current Theme</h2>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">小諸城と「穴城」の謎<br><span class="text-gray-500 text-lg">〜谷底に潜む最強の要塞〜</span></h3>
+                    <div class="bg-white/60 border border-blue-50 rounded-2xl p-6 shadow-sm text-gray-700">
+                        <p class="text-sm leading-relaxed">
+                            小諸城は、城下町よりも低い場所に位置する日本でも極めて稀な<strong class="text-blue-700">「穴城（あなじろ）」</strong>です。浅間山の火山灰層を千曲川が削り取ってできた深い谷（断崖絶壁）を天然の堀として活用した、その地形学的戦略は圧巻の一言に尽きます。<br><br>
+                            本アーカイブでは、その特異な防衛構造に加え、小諸に根付くユニークな文化の象徴「ペンギンの蔵」など、地域の知恵と歴史が交差するポイントをAIが独自の視点で考察し、解説します。
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- オーディオプレイヤーカード -->
+            <div class="glass-card rounded-3xl p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">History Audio</span>
+                    <span id="playing-indicator" class="text-[10px] text-gray-400 font-medium">待機中...</span>
+                </div>
+                <audio id="main-audio" controls class="w-full h-10 mb-8 focus:outline-none">
+                    お使いのブラウザはオーディオ再生に対応していません。
+                </audio>
+
+                <div class="space-y-4" id="playlist">
+                    <!-- トラック1 -->
+                    <div onclick="playTrack('./talk-komorojyo01.mp3', '谷底の最強要塞小諸城とペンギンの蔵', '地形を味方につけた小諸城の防衛システムと、歴史の片隅に佇む「ペンギンの蔵」の深い関わりを解説します。', this)" 
+                         class="group cursor-pointer p-5 rounded-2xl border border-gray-100 hover:border-blue-200 hover:bg-white transition-all duration-300">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-800">谷底の最強要塞小諸城とペンギンの蔵</h4>
+                                    <p class="text-[10px] text-gray-400 uppercase mt-1">talk-komorojyo01 • 5:20</p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-blue-400 font-bold">01</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 動画リンクカード -->
+            <div class="glass-card rounded-3xl p-8 border-l-8 border-emerald-500">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8l4 2-4 2V8z" />
+                        </svg>
+                        AI Video Commentary
+                    </span>
+                    <a href="https://youtu.be/bupGjmhMEAk" target="_blank" class="text-[10px] text-emerald-600 font-bold hover:underline uppercase">YouTubeで視聴 →</a>
+                </div>
+                <h4 class="text-lg font-bold text-gray-800 leading-tight mb-4">
+                    小諸城：穴城、日本の究極の防御要塞
+                </h4>
+                <p class="text-sm text-gray-500 mb-6">映像を通して、城下町から見下ろす位置に築かれた城が、いかにして敵を圧倒したのかを視覚的に解説します。</p>
+                <a href="https://youtu.be/bupGjmhMEAk" target="_blank" 
+                   class="inline-flex items-center px-8 py-3 bg-white border-2 border-emerald-500 text-emerald-600 font-bold rounded-2xl hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-sm">
+                    動画を再生する
+                </a>
+            </div>
+
+            <!-- AI Insight 表示エリア（動的） -->
+            <div id="ai-insight-panel" class="hidden glass-card rounded-3xl p-8 bg-blue-600 text-white shadow-xl shadow-blue-200/40 border border-blue-500">
+                <div class="flex items-center space-x-2 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">AI Historian's Insight</span>
+                </div>
+                <p id="ai-insight-text" class="text-base leading-relaxed font-bold"></p>
+            </div>
+
+            <!-- キュレーター紹介 -->
+            <div class="glass-card rounded-3xl p-10 text-center mt-12 border border-gray-100">
+                <p class="text-[10px] text-gray-400 uppercase tracking-[0.4em] mb-6 font-bold text-gray-400">Authorized Curator</p>
+                
+                <div class="relative w-32 h-24 mx-auto mb-6 flex items-center justify-center overflow-hidden rounded-xl bg-gray-50 border border-gray-100 shadow-inner">
+                    <img src="./aikon-sita.png" alt="デジタル資料館" class="w-full h-full object-cover">
+                </div>
+
+                <h4 class="text-xl font-bold text-gray-900 mb-1">中島 義健</h4>
+                <p class="text-sm text-blue-600 font-bold mb-4">地域歴史アーカイブ 推進員</p>
+                <a href="mailto:yoshi0213@gmail.com" class="text-xs text-gray-400 font-mono bg-gray-50 py-2 rounded-lg inline-block px-4 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">
+                    yoshi0213@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <footer class="mt-20 text-center text-gray-400 text-[10px] tracking-[0.5em] uppercase font-bold">
+            &copy; 2024 AI Regional History Digital Archive
+        </footer>
+    </div>
+
+    <script>
+        function playTrack(url, title, insight, element) {
+            const audio = document.getElementById('main-audio');
+            const indicator = document.getElementById('playing-indicator');
+            const insightPanel = document.getElementById('ai-insight-panel');
+            const insightText = document.getElementById('ai-insight-text');
+
+            document.querySelectorAll('#playlist > div').forEach(el => el.classList.remove('track-active', 'bg-white', 'shadow-md'));
+            element.classList.add('track-active', 'bg-white', 'shadow-md');
+
+            audio.src = url;
+            indicator.innerText = "読込中...";
+            
+            audio.play().then(() => {
+                indicator.innerText = "再生中: " + title;
+            }).catch(error => {
+                console.warn("Playback error:", error);
+                indicator.innerHTML = '<span class="text-red-500 font-bold">再生失敗: ファイル未検出</span>';
+            });
+
+            insightPanel.classList.remove('hidden');
+            insightText.innerText = insight;
+        }
+    </script>
+</body>
+</html>
